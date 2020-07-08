@@ -1,0 +1,3 @@
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/build/CMakeFiles/ARTCplusplus.dir
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/build/CMakeFiles/edit_cache.dir
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/build/CMakeFiles/rebuild_cache.dir

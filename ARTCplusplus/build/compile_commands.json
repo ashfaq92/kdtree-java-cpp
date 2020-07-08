@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/build",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\BUILDT~1\\VC\\Tools\\Llvm\\bin\\clang-cl.exe  /nologo -TP   /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd   -std:c++14 /FoCMakeFiles\\ARTCplusplus.dir\\main.cpp.obj /FdTARGET_COMPILE_PDB -c \"C:\\Users\\Muhammad Ashfaq\\OneDrive\\Programming\\ARTCplusplus\\main.cpp\"",
+  "file": "C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/main.cpp"
+}
+]

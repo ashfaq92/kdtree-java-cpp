@@ -1,0 +1,52 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Node.h
+Point.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Point.h
+
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Point.h
+iostream
+-
+vector
+-
+random
+-
+
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/fscs/art/FSCS_ART.h
+../../auxiliary/model/Point.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Point.h
+
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/kdfc/art/KDFC_ART.h
+stack
+-
+queue
+-
+cfloat
+-
+vector
+-
+../../auxiliary/model/Node.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Node.h
+
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/main.cpp
+iostream
+-
+vector
+-
+cmath
+-
+auxiliary/model/Point.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Point.h
+auxiliary/model/Node.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/auxiliary/model/Node.h
+fscs/art/FSCS_ART.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/fscs/art/FSCS_ART.h
+kdfc/art/KDFC_ART.h
+C:/Users/Muhammad Ashfaq/OneDrive/Programming/ARTCplusplus/kdfc/art/KDFC_ART.h
+
