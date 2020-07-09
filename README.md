@@ -1,6 +1,6 @@
 # kdtree-java-cpp
 
-Added main function for java project and increased the readability- readibility.
+Added main function for java project and increased the code readibility.
 The entry point to java project is KDFC_ART.java file. 
 There, I have included the example in main function that a sample data-set of random vectors and searches nearest neighbor of another randomly generated query point. 
 The example is self-explanotary. The functioning is: The method takes a data-set, creates KD-tree based index and then performs nearest neighbor query. 
