@@ -18,7 +18,7 @@ void limBalKdfcWrapper() {
 
     // preliminary steps
     double d = bdSize;
-    vector<int> backNum = vector<int> (pointNum);
+    vector<Point> backNum = vector<Point> (pointNum);
     backNum[1] = 1;
     for (int i = 2; i < pointNum; i++) {
         Point p = Point::newGenerateRandP(bd);
@@ -30,19 +30,21 @@ void limBalKdfcWrapper() {
 
 int main() {
     cout << "Hello, World!" << endl;
-    // Node a;
-    // vector<float> cordp;
-    // cordp.push_back(2.0f);
-    // // cout<<cordp[0];
-    //
-    // vector<vector<float> > bd = {{0.0, 1.0}, {0,1}};
-    // Point b = Point::generateRandP(bd);
-    // b.printPoint();
+    int bd[2][2] = {{-5000, 5000}, {-5000, 5000}};
+    int bdSize = sizeof(bd[0])/sizeof(int);
+    int rows = bdSize, columns = bdSize;
+    int pointNum = 500;
 
-    // FSCS_ART myfscs = FSCS_ART(10) ;
-    // myfscs.testFscsArt_Efficiency(500, bd, true);
+    double d = bdSize;
+    vector<Point> randData = vector<Point>(pointNum);
+    for (int i = 0; i < pointNum; i++) {
+        Point p = Point::newGenerateRandP(bd);
+        randData.push_back(p);
+    }
 
-    limBalKdfcWrapper();
+    KDFC_ART kdfc = KDFC_ART(bd[0], rows, columns);
+    kdfc.buildIndex(randData, true);
+    
     return 0;
 
 }

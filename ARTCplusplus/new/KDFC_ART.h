@@ -19,11 +19,16 @@ public:
     Node* root;
     int size = 0;
     int candidateNum = 10;
+    int *newInputDomain;
     vector<vector<float>> inputDomain;
+    int rows;
+    int columns;
 
-    KDFC_ART(vector<vector<float>> bound) {
+    KDFC_ART(int* bound, int rows, int columns) {
         this->root = new Node();
-        this->inputDomain = bound;
+        this->newInputDomain = bound;
+        this->rows = rows;
+        this->columns = columns;
     }
 
     stack<Node*> getTreePath(Point p) {
@@ -162,7 +167,7 @@ public:
         return split;
     }
 
-    void insertPointByStrategy(Point* p) {
+void insertPointByStrategy(Point * p) {
         if (root->p == nullptr) {
             root->deep = 1;
             root->p = p; //todo: is this okay or do I pass parameter "Point* p" ??
@@ -200,6 +205,24 @@ public:
         size++;
     }
 
+	int buildIndex(vector<Point> & dataSet, bool debug) {  //returns KDTree of  data-set
+		double d = this->columns;  // dimensionality of input domain
+		int back = 0;
+        int dataSetSize = dataSet.size();
+		int* backNum = new int[dataSetSize];
+        
+		backNum[1] = 1;
+		for (int i = 2; i < dataSetSize; i++) {
+            backNum[i] = (int) ceil(1 / 2.0 * pow((d + 1 / d), 2) * (log(i) / log(2)));
+		}
+		for (int i = 0; i < dataSetSize; i ++){
+            Point p = dataSet.at(i);
+			back = backNum[this->size];
+			this->insertPointByStrategy(&p);
+			if (debug){p.printPoint();}   // if debug is true, print the dataset point to visualize them on www.desmos.com/calculator
+		}
+		return back;
+	}
 
     void testLimBalKDFC_Efficiency(int pointNum, vector<int> backNum, bool debug=false) {
         Point p = Point::generateRandP(this->inputDomain);
