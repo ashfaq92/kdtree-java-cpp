@@ -215,31 +215,6 @@ public class KDFC_ART {
 		size++;
 	}
 
-	// public void testLimBalKDFC_Efficiency(int pointNum, int[] backNum) throws IOException { // LimBalKDFC����Ч�ʲ���
-
-	// 	Point p = Point.generateRandP(inputDomain); // �������һ������
-	// 	this.insertPointByStrategy(p);
-	// 	Point finalCase;
-	// 	ArrayList<Point> canD;
-	// 	for (int i = 1; i < pointNum; i++) {
-	// 		canD = new ArrayList<>(); // ����������ѡ��
-	// 		for (int j = 0; j < candidateNum; j++) {
-	// 			canD.add(Point.generateRandP(inputDomain));
-	// 		}
-	// 		finalCase = canD.get(0);
-	// 		int back = backNum[this.size];
-	// 		double distance = this.getMinDisByBacktracking(finalCase, back);
-	// 		for (int c = 1; c < candidateNum; c++) {
-	// 			double d = this.getMinDisByBacktracking(canD.get(c), back); // �����С����
-	// 			if (distance < d) { // �����С���������Ǹ���ѡ��
-	// 				distance = d;
-	// 				finalCase = canD.get(c);
-	// 			}
-	// 		}
-	// 		this.insertPointByStrategy(finalCase);
-	// 	}
-	// }
-
 	public int buildIndex(ArrayList<Point> dataSet, boolean debug) {  //returns KDTree of  data-set
 		double d = this.inputDomain.length;  // dimensionality of input domain
 		int back = 0;
@@ -260,20 +235,19 @@ public class KDFC_ART {
 
 
 	public static void main(String[] args) {
-		System.out.println("Hello World");
 		// input domain. also called input space. 
 		//In this case 2 dimensional input domain is created. each dimension represents axis on coordinate plane 
 		int[][] D = {{-5000, 5000}, {-5000, 5000}};  
-		ArrayList<Point> randData = new ArrayList<>();  // generate 100 vectors/data points in input domain
+		ArrayList<Point> randData = new ArrayList<>();  // generate vectors/data points in input domain
 		for (int i = 0; i < 500; i++) {
 			Point x = Point.generateRandP(D);
 			randData.add(x);
 		}
 
 		KDFC_ART myKdTree = new KDFC_ART(D);
-		int back = myKdTree.buildIndex(randData, true);
+		int back = myKdTree.buildIndex(randData, true);  //back is just a back tracking number that is globally kept
 
-		Point q = Point.generateRandP(D);   // generate a query point for neares neighbor search
+		Point q = Point.generateRandP(D);   // generate a query point for nearest neighbor search
 		double minDist = myKdTree.getMinDisByBacktracking(q, back);  //get the distance of nearest neighbor to q
 		System.out.println("\n\t"+minDist);
 		q.printPoint();
