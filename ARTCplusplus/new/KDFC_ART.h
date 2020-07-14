@@ -19,7 +19,7 @@ public:
     Node* root;
     int size = 0;
     int candidateNum = 10;
-    int *newInputDomain;
+    int* newInputDomain;
     vector<vector<float>> inputDomain;
     int rows;
     int columns;
@@ -167,40 +167,49 @@ public:
         return split;
     }
 
-void insertPointByStrategy(Point * p) {
+    void insertPointByStrategy(Point* p) {    
         if (root->p == nullptr) {
             root->deep = 1;
-            root->p = p; //todo: is this okay or do I pass parameter "Point* p" ??
-            // root.boundary = vector ( p.n , vector<float > (2, 0));
-            root->boundary = this->inputDomain;
+            root->p = p;
+            root->newBoundary = new int*[p->n];
+            for (int i = 0; i < 2; i++) 
+                root->newBoundary[i] = new int[2];
+            for (int i = 0; i < p->n; i++){
+                root->newBoundary[i][0] = this->inputDomain[i][0];
+                root->newBoundary[i][1] = this->inputDomain[i][1];
+            }
             root->split = this->splitSelect(root->boundary, p);
         } else {
             Node* ntemp = root;
             Node* n = new Node();
-            while (true) {
-                if(ntemp->p->coordPoint[ntemp->split] > p->coordPoint[ntemp->split]) {
+            //while (true) {
+                
+                if(ntemp->p->coordPointNew[ntemp->split] > p->coordPointNew[ntemp->split]) {                
                     if (ntemp->left == nullptr) {
                         ntemp->left = n;
-                        break;
+               //         break;
                     }
                     ntemp = ntemp->left;
-                } else {
+                } 
+                return;/*
+                else {
                     if (ntemp->right == nullptr) {
                         ntemp->right = n;
-                        break;
+              //          break;
                     }
                     ntemp = ntemp->right;
-                }
-            }
-            n->p = p;
-            n->boundary = ntemp->boundary;
+                }*/
+            //}
+            n->p = p;        
+            n->newBoundary = ntemp->newBoundary;
             n->deep = ntemp->deep+1;
             if (n->p->coordPoint[ntemp->split] < ntemp->p->coordPoint[ntemp->split]) {
-                n->boundary[ntemp->split][1] = ntemp->p->coordPoint[ntemp->split];
+                n->newBoundary[ntemp->split][1] = ntemp->p->coordPoint[ntemp->split];
+               //*( ((n->newBoundary) + ntemp->split) + 1) = ntemp->p->coordPoint[ntemp->split];
             } else {
-                n->boundary[ntemp->split][0] = ntemp->p->coordPoint[ntemp->split];
+                n->newBoundary[ntemp->split][0] = ntemp->p->coordPoint[ntemp->split];
             }
-            n->split = this->splitSelect(n->boundary, p);
+            //n->split = this->splitSelect(n->newboundary, p);
         }
         size++;
     }
@@ -209,8 +218,7 @@ void insertPointByStrategy(Point * p) {
 		double d = this->columns;  // dimensionality of input domain
 		int back = 0;
         int dataSetSize = dataSet.size();
-		int* backNum = new int[dataSetSize];
-        
+		int* backNum = new int[dataSetSize];    
 		backNum[1] = 1;
 		for (int i = 2; i < dataSetSize; i++) {
             backNum[i] = (int) ceil(1 / 2.0 * pow((d + 1 / d), 2) * (log(i) / log(2)));
@@ -218,7 +226,7 @@ void insertPointByStrategy(Point * p) {
 		for (int i = 0; i < dataSetSize; i ++){
             Point p = dataSet.at(i);
 			back = backNum[this->size];
-			this->insertPointByStrategy(&p);
+			this->insertPointByStrategy(&p); //FIXME
 			if (debug){p.printPoint();}   // if debug is true, print the dataset point to visualize them on www.desmos.com/calculator
 		}
 		return back;

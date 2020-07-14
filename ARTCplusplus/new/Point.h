@@ -15,9 +15,11 @@ class Point {
 public:
     int n;  // Dimensions
     vector<float> coordPoint;   // Store the coordinate values of each dimension of the point
+    float* coordPointNew;   // Store the coordinate values of each dimension of the point
     Point() {}    // Constructor1
     Point(int n) {     // Constructor2
         this->n = n;
+        coordPointNew = new float[n];
     }
 
     static double getDistance(Point p1, Point p2) { // Get a Euclidean distance between two test points
@@ -71,8 +73,8 @@ public:
         int n = sizeof(inputDomain[0])/sizeof(int);
         Point newPoint = Point(n);
         for (int i = 0; i < n; i++) {
-            newPoint.coordPoint.push_back(
-                    (float) (inputDomain[i][0] + (inputDomain[i][1] - inputDomain[i][0]) * myrand(generator)));
+            newPoint.coordPointNew[i] = 
+                    (float) (inputDomain[i][0] + (inputDomain[i][1] - inputDomain[i][0]) * myrand(generator));
         }
         return newPoint;
     }

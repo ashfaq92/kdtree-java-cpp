@@ -15,6 +15,8 @@ public:
     Node *parent;
     Point *p;
     vector<vector<float> > boundary;
+    int** newBoundary;
+
     int deep;
 
     // Node() {
